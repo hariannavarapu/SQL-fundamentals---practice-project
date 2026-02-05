@@ -1,0 +1,36 @@
+-- TCL (Transaction Control Language)
+
+-- Example 1: COMMIT
+BEGIN TRANSACTION;
+
+INSERT INTO employees (emp_id, emp_name, salary)
+VALUES (201, 'Rahul', 40000);
+
+UPDATE employees
+SET salary = 45000
+WHERE emp_id = 201;
+
+COMMIT;
+
+-- Example 2: ROLLBACK
+BEGIN;
+
+INSERT INTO employees (emp_id, emp_name, salary)
+VALUES (202, 'Sneha', 42000);
+
+ROLLBACK;
+
+-- Example 3: SAVEPOINT
+BEGIN;
+
+INSERT INTO orders (order_id, product_name)
+VALUES (301, 'Laptop');
+
+SAVEPOINT sp_order;
+
+INSERT INTO orders (order_id, product_name)
+VALUES (302, 'Mobile');
+
+ROLLBACK TO sp_order;
+
+COMMIT;
