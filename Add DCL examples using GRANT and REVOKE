@@ -1,0 +1,26 @@
+
+-- DCL (Data Control Language)
+
+
+-- Create sample users (syntax may vary by DB)
+CREATE USER analyst IDENTIFIED BY analyst123;
+CREATE USER intern IDENTIFIED BY intern123;
+
+-- Grant permissions
+GRANT SELECT ON employees TO analyst;
+GRANT SELECT, INSERT ON employees TO intern;
+
+-- Grant multiple permissions
+GRANT UPDATE, DELETE ON orders TO analyst;
+
+-- Revoke a specific permission
+REVOKE INSERT ON employees FROM intern;
+
+-- Revoke all permissions
+REVOKE ALL ON orders FROM intern;
+
+-- Example with role 
+CREATE ROLE read_only;
+
+GRANT SELECT ON employees TO read_only;
+GRANT read_only TO intern;
